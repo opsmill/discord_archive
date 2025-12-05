@@ -134,13 +134,60 @@ For deploying to a subpath (e.g., `https://username.github.io/repo-name`):
 BASE_PATH=/repo-name npm run build
 ```
 
-### Other Platforms
+### Cloudflare Pages
 
-The `build` directory contains static files that can be deployed to any static hosting:
+**Option 1: Connect to Git**
 
-- **Netlify**: Drag and drop the `build` folder or connect your repository
-- **Vercel**: Import your repository and set the output directory to `build`
-- **Any web server**: Copy the `build` directory contents to your web root
+1. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
+2. Click "Create a project" > "Connect to Git"
+3. Select your repository
+4. Configure build settings:
+   - **Framework preset**: SvelteKit
+   - **Build command**: `npm run build`
+   - **Build output directory**: `build`
+   - **Root directory**: `svelte-app` (if the app is in a subdirectory)
+5. Click "Save and Deploy"
+
+**Option 2: Direct Upload**
+
+1. Build locally: `npm run build`
+2. Go to Cloudflare Pages dashboard
+3. Click "Create a project" > "Direct Upload"
+4. Upload the `build` folder
+
+**Option 3: Wrangler CLI**
+
+```bash
+# Install wrangler
+npm install -g wrangler
+
+# Login to Cloudflare
+wrangler login
+
+# Deploy
+npm run build
+wrangler pages deploy build --project-name=infrahub-qa
+```
+
+### Netlify
+
+1. Connect your repository or drag and drop the `build` folder
+2. Build settings:
+   - **Build command**: `npm run build`
+   - **Publish directory**: `build`
+   - **Base directory**: `svelte-app` (if in a subdirectory)
+
+### Vercel
+
+1. Import your repository
+2. Configure:
+   - **Framework Preset**: SvelteKit
+   - **Output Directory**: `build`
+   - **Root Directory**: `svelte-app` (if in a subdirectory)
+
+### Any Static Host
+
+The `build` directory contains static files that can be deployed to any web server. Just copy the contents to your web root.
 
 ## Project Structure
 
