@@ -5,6 +5,9 @@ node_modules/
 build/
 .svelte-kit/
 
+# Extracted data (from data.zip)
+static/data/
+
 # Environment files
 .env
 .env.*

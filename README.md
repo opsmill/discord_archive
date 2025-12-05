@@ -53,7 +53,13 @@ npm run preview
 
 ## Data Format
 
-Place your Discord thread JSON files in `static/data/`. The app expects:
+The app extracts thread data from `data.zip` during the build process. The zip file should contain JSON files at the root level (not in a subdirectory).
+
+To update the data:
+1. Replace `data.zip` with your new archive
+2. Run `npm run build` (or `npm run extract-data` to just extract)
+
+The extracted files will be placed in `static/data/`. The app expects:
 
 ### Thread Files
 
