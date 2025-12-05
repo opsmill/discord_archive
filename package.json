@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "extract-data": "rm -rf static/data && mkdir -p static/data && unzip -o data.zip -d static/data/",
+    "extract-data": "rm -rf static/data && mkdir -p static/data && ([ -f data.zip ] && unzip -o data.zip -d static/data/ || echo 'No data.zip found, skipping extraction')",
     "dev": "vite dev",
     "prebuild": "npm run extract-data",
     "build": "vite build",
